@@ -8,6 +8,7 @@ This project implements a simple Slack bot server in Go that can send and receiv
 - 💬 Send messages to a Slack channel
 - 🔄 Forward Slack messages to a webhook (optional)
 - 🚀 Easy to set up and run
+- 🖥️ Cross-compilation support for Linux AMD64
 
 ## 🛠️ Prerequisites
 
@@ -79,7 +80,13 @@ This project implements a simple Slack bot server in Go that can send and receiv
    make build
    ```
 
-4. Run the bot:
+4. Cross-compile for Linux AMD64:
+
+   ```
+   make build-linux
+   ```
+
+5. Run the bot:
 
    ```
    ./slack-bot-server -token=xoxb-your-token -channel=C0123456789
@@ -111,9 +118,10 @@ curl -X POST -d "Hello from the bot!" http://localhost:8080/send
 ## 🛠️ Makefile Commands
 
 - `make deps`: Install dependencies
-- `make build`: Build the bot
+- `make build`: Build the bot for the current system
+- `make build-linux`: Cross-compile the bot for Linux AMD64
 - `make run`: Run the bot (requires setting TOKEN and CHANNEL environment variables)
-- `make clean`: Remove built binary
+- `make clean`: Remove built binaries
 
 ## 🔒 Security Note
 

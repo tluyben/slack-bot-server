@@ -5,9 +5,9 @@ BINARY_NAME=slack-bot-server
 GO=go
 
 # Main targets
-.PHONY: all deps build run clean
+.PHONY: all deps build build-linux run clean
 
-all: deps build
+all: deps build build-linux
 
 deps:
 	@echo "Installing dependencies..."
@@ -16,6 +16,10 @@ deps:
 build:
 	@echo "Building $(BINARY_NAME)..."
 	$(GO) build -o $(BINARY_NAME) .
+
+build-linux:
+	@echo "Cross-compiling $(BINARY_NAME) for Linux AMD64..."
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GO) build -o $(BINARY_NAME)-linux-amd64 .
 
 run: build
 	@if [ -z "$(TOKEN)" ] || [ -z "$(CHANNEL)" ]; then \
@@ -27,15 +31,16 @@ run: build
 
 clean:
 	@echo "Cleaning up..."
-	rm -f $(BINARY_NAME)
+	rm -f $(BINARY_NAME) $(BINARY_NAME)-linux-amd64
 	$(GO) clean
 
 # Helper targets
 .PHONY: help
 help:
 	@echo "Available targets:"
-	@echo "  deps   - Install dependencies"
-	@echo "  build  - Build the bot"
-	@echo "  run    - Run the bot (requires TOKEN and CHANNEL to be set)"
-	@echo "  clean  - Remove built binary"
-	@echo "  help   - Show this help message"
+	@echo "  deps         - Install dependencies"
+	@echo "  build        - Build the bot for the current system"
+	@echo "  build-linux  - Cross-compile the bot for Linux AMD64"
+	@echo "  run          - Run the bot (requires TOKEN and CHANNEL to be set)"
+	@echo "  clean        - Remove built binaries"
+	@echo "  help         - Show this help message"
