@@ -14,11 +14,11 @@ import (
 )
 
 var (
-	token    string
-	channel  string
-	port     int
-	webhook  string
-	api      *slack.Client
+	token   string
+	channel string
+	port    int
+	webhook string
+	api     *slack.Client
 )
 
 func main() {
@@ -37,7 +37,7 @@ func main() {
 	http.HandleFunc("/slack/events", handleSlackEvents)
 	http.HandleFunc("/send", handleIncomingMessage)
 
-	log.Printf("Server is running on port %d", port)
+	log.Printf("slack-bot-server is running on port %d", port)
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
 

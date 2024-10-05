@@ -1,6 +1,6 @@
-# 🤖 Slack Bot in Go
+# 🤖 Slack Bot Server in Go
 
-This project implements a simple Slack bot in Go that can send and receive messages, as well as forward messages to a webhook.
+This project implements a simple Slack bot server in Go that can send and receive messages, as well as forward messages to a webhook.
 
 ## 📋 Features
 
@@ -21,8 +21,8 @@ This project implements a simple Slack bot in Go that can send and receive messa
 1. Clone this repository:
 
    ```
-   git clone https://github.com/yourusername/slack-bot-go.git
-   cd slack-bot-go
+   git clone https://github.com/yourusername/slack-bot-server.git
+   cd slack-bot-server
    ```
 
 2. Install dependencies:
@@ -40,13 +40,13 @@ This project implements a simple Slack bot in Go that can send and receive messa
 4. Run the bot:
 
    ```
-   ./slack-bot -token=xoxb-your-token -channel=C0123456789
+   ./slack-bot-server -token=xoxb-your-token -channel=C0123456789
    ```
 
    To include a webhook:
 
    ```
-   ./slack-bot -token=xoxb-your-token -channel=C0123456789 -webhook=https://your-webhook-url
+   ./slack-bot-server -token=xoxb-your-token -channel=C0123456789 -webhook=https://your-webhook-url
    ```
 
 ## 🔧 Configuration

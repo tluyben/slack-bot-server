@@ -1,4 +1,4 @@
-# Makefile for Slack Bot
+# Makefile for Slack Bot Server
 
 # Variables
 BINARY_NAME=slack-bot-server
