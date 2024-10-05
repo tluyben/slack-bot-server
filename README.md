@@ -12,9 +12,51 @@ This project implements a simple Slack bot server in Go that can send and receiv
 ## 🛠️ Prerequisites
 
 - Go 1.16 or higher
-- Slack Bot Token
-- Slack Channel ID
-- (Optional) Webhook URL
+- A Slack workspace where you have permissions to add apps
+- Basic familiarity with Slack
+
+## 🚀 Setup Steps
+
+### Create a Slack App
+
+1. Go to https://api.slack.com/apps
+2. Click "Create New App" and choose "From scratch"
+3. Name your app and select your workspace
+
+### Set Up Bot User
+
+1. In the left sidebar, click "Bot Users"
+2. Click "Add a Bot User"
+3. Choose a display name and username for your bot
+
+### Configure Permissions
+
+1. In the left sidebar, click "OAuth & Permissions"
+2. Scroll to "Scopes" and add these Bot Token Scopes:
+   - app_mentions:read
+   - chat:write
+
+### Enable Events
+
+1. In the left sidebar, click "Event Subscriptions"
+2. Toggle "Enable Events" to On
+3. Under "Subscribe to bot events", add app_mention
+
+### Install App to Workspace
+
+1. In the left sidebar, click "Install App"
+2. Click "Install App to Workspace"
+3. Review and allow the permissions
+
+### Get Bot Token
+
+1. After installation, go back to "OAuth & Permissions"
+2. Copy the "Bot User OAuth Token" (starts with xoxb-)
+
+### Invite Bot to Channel
+
+1. In Slack, go to the channel where you want to use the bot
+2. Type /invite @your_bot_name
 
 ## 🚀 Getting Started
 
