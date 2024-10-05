@@ -21,7 +21,7 @@ This project implements a simple Slack bot server in Go that can send and receiv
 1. Clone this repository:
 
    ```
-   git clone https://github.com/yourusername/slack-bot-server.git
+   git clone https://github.com/tluyben/slack-bot-server.git
    cd slack-bot-server
    ```
 
