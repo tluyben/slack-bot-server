@@ -9,12 +9,14 @@ This project implements a simple Slack bot server in Go that can send and receiv
 - 🔄 Forward Slack messages to a webhook (optional)
 - 🚀 Easy to set up and run
 - 🖥️ Cross-compilation support for Linux AMD64
+- 🐳 Docker support
 
 ## 🛠️ Prerequisites
 
 - Go 1.16 or higher
 - A Slack workspace where you have permissions to add apps
 - Basic familiarity with Slack
+- Docker (optional)
 
 ## 🚀 Setup Steps
 
@@ -60,6 +62,25 @@ This project implements a simple Slack bot server in Go that can send and receiv
 2. Type /invite @your_bot_name
 
 ## 🚀 Getting Started
+
+### Using Docker
+
+1. Clone this repository:
+
+   ```
+   git clone https://github.com/tluyben/slack-bot-server.git
+   cd slack-bot-server
+   ```
+
+2. Build and run using Docker Compose:
+
+   ```
+   docker-compose up --build
+   ```
+
+   Make sure to set the `SLACK_CHANNEL` and `SLACK_TOKEN` environment variables before running.
+
+### Without Docker
 
 1. Clone this repository:
 

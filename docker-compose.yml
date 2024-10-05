@@ -1,0 +1,13 @@
+version: '3'
+services:
+  slack-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /home/ubuntu/slack-bot-server:/app/slack-bot-server
+    environment:
+      - SLACK_CHANNEL=${SLACK_CHANNEL}
+      - SLACK_TOKEN=${SLACK_TOKEN}
+    ports:
+      - "127.0.0.1:8080:8080"
