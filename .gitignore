@@ -11,4 +11,3 @@ env.local
 *.out
 /vendor/
 /Godeps/
-slack-bot-server
