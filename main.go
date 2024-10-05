@@ -44,12 +44,14 @@ func main() {
 func handleSlackEvents(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
+		log.Printf("Error reading request body: %v", err)
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
 
 	ev, err := slackevents.ParseEvent(json.RawMessage(body), slackevents.OptionNoVerifyToken())
 	if err != nil {
+		log.Printf("Error parsing Slack event: %v", err)
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}
@@ -58,6 +60,7 @@ func handleSlackEvents(w http.ResponseWriter, r *http.Request) {
 		var r *slackevents.ChallengeResponse
 		err := json.Unmarshal([]byte(body), &r)
 		if err != nil {
+			log.Printf("Error unmarshalling challenge response: %v", err)
 			w.WriteHeader(http.StatusInternalServerError)
 			return
 		}
@@ -86,13 +89,15 @@ func handleIncomingMessage(w http.ResponseWriter, r *http.Request) {
 
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
+		log.Printf("Error reading request body: %v", err)
 		http.Error(w, "Error reading request body", http.StatusInternalServerError)
 		return
 	}
 
 	_, _, err = api.PostMessage(channel, slack.MsgOptionText(string(body), false))
 	if err != nil {
-		http.Error(w, "Error sending message to Slack", http.StatusInternalServerError)
+		log.Printf("Error sending message to Slack: %v", err)
+		http.Error(w, fmt.Sprintf("Error sending message to Slack: %v", err), http.StatusInternalServerError)
 		return
 	}
 
